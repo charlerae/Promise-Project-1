@@ -13,4 +13,15 @@ const options = {
 const parser = dash.createParser(options);
 
 const opts = parser.parse(options);
-console.log('Options are:', opts);
+const output = opts.output;
+const url = opts._args[0];
+console.log(output, url);
+
+//fetching data from an API
+const url2 = "https://artii.herokuapp.com/make?text=curl++this"
+
+fetch(url2)
+    .then(data => {return data.json()})
+    .then(res => {console.log(res)})
+    .catch(reason => {console.log("rejected because", reason)})
+
